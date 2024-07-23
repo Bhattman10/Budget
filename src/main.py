@@ -8,7 +8,7 @@ from print import print_menu, print_transactions
 from user_input import user_input_add_transaction, user_input_delete_transaction
 
 # Version
-print("Budget - 0.0.6\n")
+print("Budget - 0.0.7\n")
 
 # Boolean to indiciate menu running
 running = True
@@ -24,7 +24,9 @@ menu_options = [
 while running:
 
     #display all transactions
+    print()
     print_transactions()
+    print()
 
     #display main menu with options
     print_menu(menu_options)
@@ -34,12 +36,14 @@ while running:
 
     # Process the choice
     if choice == "1":
+        print()
         print("Adding a transaction...")
         user_input_add_transaction()
     elif choice == "2":
         print("Deleting a transaction...")
         user_input_delete_transaction()
     elif choice == "3":
+        print()
         print("Exiting Budget...")
         running = False
     else:
