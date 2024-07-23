@@ -1,14 +1,14 @@
 # main.py
 
-from src.print import print_menu, print_transactions
+# Import global_vars.py
+import global_vars
+# Import print.py
+from print import print_menu, print_transactions
 # Import user_input.py
-from src.user_input import user_input_add_transaction
+from user_input import user_input_add_transaction, user_input_delete_transaction
 
 # Version
-print("Budget - 0.0.5\n")
-
-# List to store transactions
-transactions = []
+print("Budget - 0.0.6\n")
 
 # Boolean to indiciate menu running
 running = True
@@ -24,7 +24,7 @@ menu_options = [
 while running:
 
     #display all transactions
-    print_transactions(transactions)
+    print_transactions()
 
     #display main menu with options
     print_menu(menu_options)
@@ -35,10 +35,10 @@ while running:
     # Process the choice
     if choice == "1":
         print("Adding a transaction...")
-        user_input_add_transaction(transactions)
+        user_input_add_transaction()
     elif choice == "2":
         print("Deleting a transaction...")
-        # Add code to handle deleting a transaction here
+        user_input_delete_transaction()
     elif choice == "3":
         print("Exiting Budget...")
         running = False

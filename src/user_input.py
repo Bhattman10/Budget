@@ -1,10 +1,10 @@
 # user_input.py
 
 # Import the Transaction class and functions from transactions.py
-from Transaction import Transaction, add_transaction
+from Transaction import Transaction, add_transaction, delete_transaction
 
 # Collect and test user input for adding transactions
-def user_input_add_transaction(transactions):
+def user_input_add_transaction():
 
     # Boolean to indicate while loop for testing is running
     testing = True
@@ -57,4 +57,9 @@ def user_input_add_transaction(transactions):
     note = input("Add note for transaction: ")
 
     #create object and append to list
-    add_transaction(transactions, year, month, day, type, amount, merchant, note)
+    add_transaction(year, month, day, type, amount, merchant, note)
+
+# Collect and test user input for deleting transactions
+def user_input_delete_transaction():
+    ID_to_delete = input("Select transaction ID to delete: ")
+    delete_transaction(ID_to_delete)

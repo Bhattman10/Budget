@@ -1,5 +1,8 @@
 # print.py
 
+# Import global_vars.py
+import global_vars
+
 # Function to print menu options
 def print_menu(options):
 
@@ -7,9 +10,9 @@ def print_menu(options):
     for option in options:
         print(option)
 
-def print_transactions(transactions):
+def print_transactions():
 
-    for transaction in transactions:
+    for transaction in global_vars.transactions:
 
         #variable to print indication of type
         if(transaction.type == '0'):
@@ -20,4 +23,4 @@ def print_transactions(transactions):
         #variable to display date in readable format
         date = transaction.month + '/' + transaction.day + '/' + transaction.year
 
-        print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
+        print('{} {} {} ${} {} {}'.format(transaction.ID, date, print_type, transaction.amount, transaction.merchant, transaction.note))
