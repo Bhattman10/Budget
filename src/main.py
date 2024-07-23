@@ -8,7 +8,7 @@ from print import print_menu, print_transactions
 from user_input import user_input_add_transaction, user_input_delete_transaction
 
 # Version
-print("Budget - 0.0.7\n")
+print("Budget - 0.0.8\n")
 
 # Boolean to indiciate menu running
 running = True

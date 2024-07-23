@@ -115,8 +115,5 @@ class TestAddDelete(unittest.TestCase):
         self.assertEqual(len(global_vars.transactions), 0)
 
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
