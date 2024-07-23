@@ -2,6 +2,8 @@
 
 # Import the Transaction class and functions from transactions.py
 from Transaction import Transaction, add_transaction, delete_transaction
+# Import print.py
+from print import print_menu, print_transactions, print_transactions_with_position
 
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
@@ -61,5 +63,9 @@ def user_input_add_transaction():
 
 # Collect and test user input for deleting transactions
 def user_input_delete_transaction():
-    ID_to_delete = input("Select transaction ID to delete: ")
-    delete_transaction(ID_to_delete)
+
+    print_transactions_with_position()
+
+    pos_to_delete = input("Select transaction to delete: ")
+
+    delete_transaction(int(pos_to_delete))

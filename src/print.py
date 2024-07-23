@@ -23,4 +23,25 @@ def print_transactions():
         #variable to display date in readable format
         date = transaction.month + '/' + transaction.day + '/' + transaction.year
 
-        print('{} {} {} ${} {} {}'.format(transaction.ID, date, print_type, transaction.amount, transaction.merchant, transaction.note))
+        print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
+
+def print_transactions_with_position():
+
+    #iterator for indicating position to delete
+    itt = 0
+
+    for transaction in global_vars.transactions:
+
+        #variable to print indication of type
+        if(transaction.type == '0'):
+            print_type = '-'
+        else:
+            print_type = '+'
+        
+        #variable to display date in readable format
+        date = transaction.month + '/' + transaction.day + '/' + transaction.year
+
+        print('[{}] {} {} ${} {} {}'.format(itt, date, print_type, transaction.amount, transaction.merchant, transaction.note))
+
+        #iterate
+        itt+=1

@@ -31,11 +31,8 @@ class TestAddDelete(unittest.TestCase):
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 1)
 
-        # Store the ID of the added transaction
-        ID_to_delete = global_vars.transactions[0].ID
-
         # Delete transaction
-        delete_transaction(ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 0)
@@ -47,25 +44,20 @@ class TestAddDelete(unittest.TestCase):
         add_transaction(2024, 7, 24, 1, 100.00, 'Puma', 'new shoes!')
         add_transaction(2024, 7, 25, 1, 100.00, 'Crocs', 'new shoes!')
 
-        # Store the ID of the added transaction
-        first_ID_to_delete = global_vars.transactions[0].ID
-        second_ID_to_delete = global_vars.transactions[1].ID
-        third_ID_to_delete = global_vars.transactions[2].ID
-
         # Delete transaction
-        delete_transaction(first_ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 2)
 
         # Delete transaction
-        delete_transaction(second_ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 1)
 
         # Delete transaction
-        delete_transaction(third_ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 0)
@@ -75,11 +67,8 @@ class TestAddDelete(unittest.TestCase):
         # Add transaction
         add_transaction(2024, 7, 23, 1, 100.00, 'Nike', 'new shoes!')
 
-        # Store ID of transaction to delete
-        ID_to_delete = global_vars.transactions[0].ID
-
         # Delete transaction
-        delete_transaction(ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 0)
@@ -89,31 +78,21 @@ class TestAddDelete(unittest.TestCase):
         add_transaction(2024, 7, 23, 1, 100.00, 'Adidas', 'new shoes!')
         add_transaction(2024, 7, 23, 1, 100.00, 'Puma', 'new shoes!')
 
-        # Store ID of transaction to delete
-        ID_to_delete = global_vars.transactions[0].ID
-
         # Delete transaction
-        delete_transaction(ID_to_delete)
+        delete_transaction(0)
 
         # Test first transaction
         self.assertEqual(global_vars.transactions[0].merchant, 'Adidas')
         self.assertEqual(global_vars.transactions[1].merchant, 'Puma')
 
-        # Store ID of transaction to delete
-        ID_to_delete = global_vars.transactions[0].ID
+        # Delete transaction
+        delete_transaction(0)
 
         # Delete transaction
-        delete_transaction(ID_to_delete)
-
-        # Store ID of transaction to delete
-        ID_to_delete = global_vars.transactions[0].ID
-
-        # Delete transaction
-        delete_transaction(ID_to_delete)
+        delete_transaction(0)
 
         # Test size of list
         self.assertEqual(len(global_vars.transactions), 0)
-
 
 if __name__ == '__main__':
     unittest.main()
