@@ -1,16 +1,15 @@
 # Transaction.py
 
 class Transaction:
-    def __init__(self, date, transaction_type, amount=None, merchant=None, note=None):
-        self.date = date
-        self.transaction_type = transaction_type
+    def __init__(self, year, month, day, type, amount=None, merchant=None, note=None):
+        self.year = year
+        self.month = month
+        self.day = day
+        self.type = type
         self.amount = amount
         self.merchant = merchant
         self.note = note
 
-def __repr__(self):
-    return f"Transaction(date={self.date}, type={self.transaction_type}, amount={self.amount}, merchant={self.merchant}, note={self.note})"
-
-def add_transaction(transactions, date, transaction_type, amount, merchant, note):
-    transaction = Transaction(date, transaction_type, amount, merchant, note)
+def add_transaction(transactions, year, month, day, type, amount, merchant, note):
+    transaction = Transaction(year, month, day, type, amount, merchant, note)
     transactions.append(transaction)
