@@ -6,7 +6,7 @@ from Transaction import Transaction, add_transaction
 from print import print_menu, print_transactions
 
 # Version
-print("Budget - 0.0.3\n")
+print("Budget - 0.0.4\n")
 
 # List to store transactions
 transactions = []
