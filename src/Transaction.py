@@ -66,13 +66,46 @@ def read_from_file():
     #close file
     f.close()
 
-    #attain length of txt file
-    length_of_file = len(txt)
-
     #find first occurance of seperated character, and indicate which char holds position
     char_pos_1 = txt.index("|")
     number_of_transactions = txt[0:char_pos_1]
 
+    #put char indication vairable in scope of for loop
+    char_pos_2 = 0
+
     #create transactions based on the number of elements listed at the beginning of file
     for x in range(int(number_of_transactions)):
-        pass
+
+        #collect year of transaction
+        char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
+        year = txt[char_pos_1+1:char_pos_2]
+
+        #collect month of transaction
+        char_pos_1 = txt.index("|", char_pos_2+1, len(txt))
+        month = txt[char_pos_2+1:char_pos_1]
+
+        #collect day of transaction
+        char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
+        day = txt[char_pos_1+1:char_pos_2]
+
+        #collect type of transaction
+        char_pos_1 = txt.index("|", char_pos_2+1, len(txt))
+        type = txt[char_pos_2+1:char_pos_1]
+
+        #collect amount of transaction
+        char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
+        amount = txt[char_pos_1+1:char_pos_2]
+
+        #collect merchant of transaction
+        char_pos_1 = txt.index("|", char_pos_2+1, len(txt))
+        merchant = txt[char_pos_2+1:char_pos_1]
+
+        #collect note of transaction
+        char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
+        note = txt[char_pos_1+1:char_pos_2]
+
+        #set char_pos_1 with value of ending indent, for resent of for loop
+        char_pos_1 = char_pos_2
+
+        #creat the transaction
+        add_transaction(year, month, day, type, amount, merchant, note)

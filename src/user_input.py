@@ -74,7 +74,7 @@ def user_input_delete_transaction():
 
     pos_to_delete = input("Select transaction to delete: ")
 
-    if int(pos_to_delete) > (len(global_vars.transactions)-1) or pos_to_delete < 0:
+    if int(pos_to_delete) > (len(global_vars.transactions)-1) or int(pos_to_delete) < 0:
         print("Error: invalid input.")
     else:
         delete_transaction(int(pos_to_delete))

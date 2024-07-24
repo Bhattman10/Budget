@@ -2,6 +2,7 @@
 
 #TODO: custom saved categories
 #TODO: month-by-month transaction tracking
+#TODO: when brand new application is loaded in, problems with loading file because it doesn't exist
 
 import global_vars
 from print import print_menu, print_transactions
@@ -10,7 +11,7 @@ from Transaction import write_to_file, read_from_file
 
 # Version
 print()
-print("Budget - 0.1.3\n")
+print("Budget - 0.1.4\n")
 
 # Update transaction list by reading from file
 read_from_file()
