@@ -1,15 +1,13 @@
 # main.py
 
-# Import global_vars.py
 import global_vars
-# Import print.py
 from print import print_menu, print_transactions
-# Import user_input.py
 from user_input import user_input_add_transaction, user_input_delete_transaction
+from Transaction import write_to_file
 
 # Version
 print()
-print("Budget - 0.1.1\n")
+print("Budget - 0.1.2\n")
 
 # Boolean to indiciate menu running
 running = True
@@ -33,6 +31,9 @@ while running:
         print()
         print_transactions()
         print()
+
+    #update by writing to dated file
+    write_to_file()
 
     #display main menu with options
     print_menu(menu_options)

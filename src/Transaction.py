@@ -21,6 +21,9 @@ def add_transaction(year, month, day, type, amount, merchant, note):
     # Add transaction to list
     global_vars.transactions.append(transaction)
 
+    #write to dated file
+    write_to_file()
+
 def delete_transaction(pos_to_delete):
 
     # Pop the transaction

@@ -44,6 +44,7 @@ def print_transactions():
         print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
     
     #print totals
+    print()
     print('Left to Spend: ${} / Total Spent: ${} / Total Income: ${}'.format(round(left_to_spend, 2), round(total_expense, 2), round(total_income, 2)))
 
 def print_transactions_with_position():
