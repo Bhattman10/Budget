@@ -9,7 +9,7 @@ from user_input import user_input_add_transaction, user_input_delete_transaction
 
 # Version
 print()
-print("Budget - 0.1.0\n")
+print("Budget - 0.1.1\n")
 
 # Boolean to indiciate menu running
 running = True
@@ -26,6 +26,7 @@ while running:
 
     #display all transactions, if there are any
     if len(global_vars.transactions) == 0:
+        print()
         print("No transactions to display.")
         print()
     else:

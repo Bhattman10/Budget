@@ -8,6 +8,8 @@ from print import print_menu, print_transactions, print_transactions_with_positi
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
 
+    print()
+
     # Boolean to indicate while loop for testing is running
     testing = True
 
@@ -64,7 +66,11 @@ def user_input_add_transaction():
 # Collect and test user input for deleting transactions
 def user_input_delete_transaction():
 
+    print()
+
     print_transactions_with_position()
+
+    print()
 
     pos_to_delete = input("Select transaction to delete: ")
 

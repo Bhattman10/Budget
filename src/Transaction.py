@@ -25,3 +25,25 @@ def delete_transaction(pos_to_delete):
 
     # Pop the transaction
     global_vars.transactions.pop(pos_to_delete)
+
+def write_to_file():
+
+    #open file
+    f = open("July2024", "w")
+
+    #iterate through transactions, adding each element seperated by a "|"
+    for transaction in global_vars.transactions:
+        f.write(transaction.year)
+        f.write("|")
+        f.write(transaction.month)
+        f.write("|")
+        f.write(transaction.day)
+        f.write("|")
+        f.write(transaction.type)
+        f.write("|")
+        f.write(transaction.amount)
+        f.write("|")
+        f.write(transaction.merchant)
+        f.write("|")
+        f.write(transaction.note)
+        f.write("|")

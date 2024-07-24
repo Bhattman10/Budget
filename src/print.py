@@ -22,7 +22,7 @@ def print_transactions():
     for transaction in global_vars.transactions:
 
         #variable to use for computing totals, in place of amount str
-        amount_int = int(transaction.amount)
+        amount_int = float(transaction.amount)
 
         #indicate type for printing and summing totals
         if(transaction.type == '0'):
@@ -42,7 +42,9 @@ def print_transactions():
         date = transaction.month + '/' + transaction.day + '/' + transaction.year
 
         print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
-        print('Left to Spend: ${} / Total Spent: ${} / Total Income: ${}'.format(left_to_spend, total_expense, total_income))
+    
+    #print totals
+    print('Left to Spend: ${} / Total Spent: ${} / Total Income: ${}'.format(round(left_to_spend, 2), round(total_expense, 2), round(total_income, 2)))
 
 def print_transactions_with_position():
 
