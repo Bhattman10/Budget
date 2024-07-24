@@ -52,16 +52,27 @@ def write_to_file():
         f.write(transaction.note)
         f.write("|")
 
+    #close file
+    f.close()
+
 def read_from_file():
 
     #open file for reading
     f = open("Transactions", "r")
 
-    #collect number of transactions from first number in file
-    #FIXME
-    number_of_transactions = f.read(1)
-    print(number_of_transactions)
+    #read entire text file into string txt variable
+    txt = f.read()
 
+    #close file
+    f.close()
 
+    #attain length of txt file
+    length_of_file = len(txt)
+
+    #find first occurance of seperated character, and indicate which char holds position
+    char_pos_1 = txt.index("|")
+    number_of_transactions = txt[0:char_pos_1]
 
     #create transactions based on the number of elements listed at the beginning of file
+    for x in range(int(number_of_transactions)):
+        pass
