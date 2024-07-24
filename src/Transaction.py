@@ -21,9 +21,6 @@ def add_transaction(year, month, day, type, amount, merchant, note):
     # Add transaction to list
     global_vars.transactions.append(transaction)
 
-    #write to dated file
-    write_to_file()
-
 def delete_transaction(pos_to_delete):
 
     # Pop the transaction
@@ -31,8 +28,12 @@ def delete_transaction(pos_to_delete):
 
 def write_to_file():
 
-    #open file
-    f = open("July2024", "w")
+    #open file for writing
+    f = open("Transactions", "w")
+
+    #write the number of elements in transaction
+    f.write(str(len(global_vars.transactions)))
+    f.write("|")
 
     #iterate through transactions, adding each element seperated by a "|"
     for transaction in global_vars.transactions:
@@ -50,3 +51,17 @@ def write_to_file():
         f.write("|")
         f.write(transaction.note)
         f.write("|")
+
+def read_from_file():
+
+    #open file for reading
+    f = open("Transactions", "r")
+
+    #collect number of transactions from first number in file
+    #FIXME
+    number_of_transactions = f.read(1)
+    print(number_of_transactions)
+
+
+
+    #create transactions based on the number of elements listed at the beginning of file

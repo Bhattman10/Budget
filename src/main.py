@@ -1,13 +1,19 @@
 # main.py
 
+#TODO: custom saved categories
+#TODO: month-by-month transaction tracking
+
 import global_vars
 from print import print_menu, print_transactions
 from user_input import user_input_add_transaction, user_input_delete_transaction
-from Transaction import write_to_file
+from Transaction import write_to_file, read_from_file
 
 # Version
 print()
 print("Budget - 0.1.2\n")
+
+# Update transaction list by reading from file
+read_from_file()
 
 # Boolean to indiciate menu running
 running = True

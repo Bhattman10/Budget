@@ -1,9 +1,9 @@
 # user_input.py
 
-# Import the Transaction class and functions from transactions.py
 from Transaction import Transaction, add_transaction, delete_transaction
-# Import print.py
 from print import print_menu, print_transactions, print_transactions_with_position
+import global_vars
+
 
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
@@ -74,4 +74,7 @@ def user_input_delete_transaction():
 
     pos_to_delete = input("Select transaction to delete: ")
 
-    delete_transaction(int(pos_to_delete))
+    if int(pos_to_delete) > (len(global_vars.transactions)-1) or pos_to_delete < 0:
+        print("Error: invalid input.")
+    else:
+        delete_transaction(int(pos_to_delete))
