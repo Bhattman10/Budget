@@ -1,10 +1,17 @@
 # main.py
 
 #TODO: custom saved categories
-#TODO: month-by-month transaction tracking
 #TODO: when brand new application is loaded in, problems with loading file because it doesn't exist
 #TODO: when pasting entire transaction into user input, new line mess up
 #TODO: when submitting "ENTER" on delete transaction, error
+#TODO: check user input for adding transactions
+#TODO: format transaction print display
+#TODO: add settings that allow you to view and delete from entire transactions list
+
+#TODO: month-by-month transaction tracking
+    #TODO: update write and read from file for month/year
+    #TODO: display current month/year at top of transactions display
+    #TODO: allow deletion of transactions only from month/year
 
 import global_vars
 from print import print_menu, print_transactions
@@ -25,7 +32,7 @@ running = True
 menu_options = [
     "1. Add Transaction",
     "2. Delete Transaction",
-    "3. Change month/date",
+    "3. Change Year/Month",
     "4. Exit Budget"
 ]
 

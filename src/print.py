@@ -21,28 +21,33 @@ def print_transactions():
 
     for transaction in global_vars.transactions:
 
-        #variable to use for computing totals, in place of amount str
-        amount_int = float(transaction.amount)
-
-        #indicate type for printing and summing totals
-        if(transaction.type == '0'):
-            #indicate type
-            print_type = '-'
-            #sum totals
-            left_to_spend-=amount_int
-            total_expense+=amount_int
+        if(transaction.year != global_vars.year):
+            pass
+        elif(transaction.month != global_vars.month):
+            pass
         else:
-            #indicate type
-            print_type = '+'
-            #sum totals
-            left_to_spend+=amount_int
-            total_income+=amount_int
-        
-        #variable to display date in readable format
-        date = transaction.month + '/' + transaction.day + '/' + transaction.year
+            #variable to use for computing totals, in place of amount str
+            amount_int = float(transaction.amount)
 
-        print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
-    
+            #indicate type for printing and summing totals
+            if(transaction.type == '0'):
+                #indicate type
+                print_type = '-'
+                #sum totals
+                left_to_spend-=amount_int
+                total_expense+=amount_int
+            else:
+                #indicate type
+                print_type = '+'
+                #sum totals
+                left_to_spend+=amount_int
+                total_income+=amount_int
+            
+            #variable to display date in readable format
+            date = transaction.month + '/' + transaction.day + '/' + transaction.year
+
+            print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
+        
     #print totals
     print()
     print('Left to Spend: ${} / Total Spent: ${} / Total Income: ${}'.format(round(left_to_spend, 2), round(total_expense, 2), round(total_income, 2)))

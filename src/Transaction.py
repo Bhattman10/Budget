@@ -42,6 +42,14 @@ def write_to_file():
     f.write(str(len(global_vars.transactions)))
     f.write("|")
 
+    #write the current display/add year
+    f.write(global_vars.year)
+    f.write("|")
+
+    #write the current display/add month
+    f.write(global_vars.month)
+    f.write("|")
+
     #iterate through transactions, adding each element seperated by a "|"
     for transaction in global_vars.transactions:
         f.write(transaction.year)
@@ -73,12 +81,17 @@ def read_from_file():
     #close file
     f.close()
 
-    #find first occurance of seperated character, and indicate which char holds position
+    #read num transactions from first element of txt
     char_pos_1 = txt.index("|")
     number_of_transactions = txt[0:char_pos_1]
 
-    #put char indication vairable in scope of for loop
-    char_pos_2 = 0
+    #read global year from second element of txt
+    char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
+    global_vars.year = txt[char_pos_1+1:char_pos_2]
+
+    #read global month from third element of txt
+    char_pos_1 = txt.index("|", char_pos_2+1, len(txt))
+    global_vars.month = txt[char_pos_2+1:char_pos_1]
 
     #create transactions based on the number of elements listed at the beginning of file
     for x in range(int(number_of_transactions)):
