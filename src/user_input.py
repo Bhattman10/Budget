@@ -43,7 +43,9 @@ def user_input_add_transaction():
     testing = True
     while(testing):
         type = input("Enter 0 for expense, 1 for income: ")
-        if int(type) > 1 or int(type) < 0:
+        if not type.isnumeric():
+            print("Error: invalid input!")
+        elif int(type) > 1 or int(type) < 0:
             print("Error: invalid input!")
         else:
             testing = False
@@ -52,7 +54,15 @@ def user_input_add_transaction():
     testing = True
     while(testing):
         amount = input("Enter amount of transaction: $")
-        if float(amount) <= 0:
+        #check if string can be casted to float
+        fail_test = False
+        try:
+            float(amount)
+        except ValueError:
+            fail_test = True
+        if fail_test:
+            print("Error: invalid input!")
+        elif float(amount) <= 0:
             print("Error: invalid input!")
         else:
             testing = False
