@@ -4,16 +4,16 @@
 #TODO: month-by-month transaction tracking
 #TODO: when brand new application is loaded in, problems with loading file because it doesn't exist
 #TODO: when pasting entire transaction into user input, new line mess up
-#TODO: when cling "ENTER" on delete transaction, throws error
+#TODO: when submitting "ENTER" on delete transaction, error
 
 import global_vars
 from print import print_menu, print_transactions
-from user_input import user_input_add_transaction, user_input_delete_transaction
+from user_input import user_input_add_transaction, user_input_delete_transaction, change_month_year
 from Transaction import write_to_file, read_from_file
 
 # Version
 print()
-print("Budget - 0.1.5\n")
+print("Budget - 0.1.7\n")
 
 # Update transaction list by reading from file
 read_from_file()
@@ -25,7 +25,8 @@ running = True
 menu_options = [
     "1. Add Transaction",
     "2. Delete Transaction",
-    "3. Exit Budget"
+    "3. Change month/date",
+    "4. Exit Budget"
 ]
 
 # While loop to display menu
@@ -63,8 +64,10 @@ while running:
             print("Deleting a transaction...")
             user_input_delete_transaction()
     elif choice == "3":
+        change_month_year()
+    elif choice == "4":
         print()
         print("Exiting Budget...")
         running = False
     else:
-        print("Invalid option. Please select a valid option from the menu.")
+        print("Error. Please select a valid option from the menu.")

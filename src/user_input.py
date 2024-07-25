@@ -13,23 +13,6 @@ def user_input_add_transaction():
     # Boolean to indicate while loop for testing is running
     testing = True
 
-    # Collect and check year from user
-    while(testing):
-        year = input("Enter year of transaction: ")
-        if len(year) != 4:
-            print("Error: invalid input!")
-        else:
-            testing = False
-    
-    # Collect and check month from user
-    testing = True
-    while(testing):
-        month = input("Enter month of transaction: ")
-        if int(month) > 12 or int(month) < 1:
-            print("Error: invalid input!")
-        else:
-            testing = False
-
     # Collect and check day from user
     testing = True
     while(testing):
@@ -71,7 +54,7 @@ def user_input_add_transaction():
     note = input("Add note for transaction: ")
 
     #create object and append to list
-    add_transaction(year, month, day, type, amount, merchant, note)
+    add_transaction(global_vars.year, global_vars.month, day, type, amount, merchant, note)
 
 # Collect and test user input for deleting transactions
 def user_input_delete_transaction():
@@ -88,3 +71,31 @@ def user_input_delete_transaction():
         print("Error: invalid input.")
     else:
         delete_transaction(int(pos_to_delete))
+
+def change_month_year():
+
+    # Boolean to indicate while loop for testing is running
+    testing = True
+
+    # Collect and check year from user
+    while(testing):
+        year = input("Select YEAR to display and add transactions to: ")
+        if len(year) != 4:
+            print("Error: invalid input!")
+        else:
+            testing = False
+
+    #set global year
+    global_vars.year = year
+    
+    # Collect and check month from user
+    testing = True
+    while(testing):
+        month = input("Select MONTH to display and add transactions to: ")
+        if int(month) > 12 or int(month) < 1:
+            print("Error: invalid input!")
+        else:
+            testing = False
+
+    #set global month
+    global_vars.month = month
