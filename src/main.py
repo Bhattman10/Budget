@@ -6,12 +6,7 @@
 #TODO: when submitting "ENTER" on delete transaction, error
 #TODO: check user input for adding transactions
 #TODO: format transaction print display
-#TODO: add settings that allow you to view and delete from entire transactions list
-
-#TODO: month-by-month transaction tracking
-    #TODO: update write and read from file for month/year
-    #TODO: display current month/year at top of transactions display
-    #TODO: allow deletion of transactions only from month/year
+#TODO: sort deletion of transactions from latest to oldest
 
 import global_vars
 from print import print_menu, print_transactions
@@ -20,7 +15,7 @@ from Transaction import write_to_file, read_from_file
 
 # Version
 print()
-print("Budget - 0.1.7\n")
+print("Budget - 0.1.8\n")
 
 # Update transaction list by reading from file
 read_from_file()
@@ -46,6 +41,7 @@ while running:
         print()
     else:
         print()
+        print('{}/{} TRANSACTIONS...'.format(global_vars.month, global_vars.year))
         print_transactions()
         print()
 
