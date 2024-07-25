@@ -21,6 +21,13 @@ def add_transaction(year, month, day, type, amount, merchant, note):
     # Add transaction to list
     global_vars.transactions.append(transaction)
 
+    #custom function for sorting
+    def trans_sort(transaction):
+        return transaction.day
+    
+    #sort transaction list
+    global_vars.transactions.sort(key=trans_sort)
+
 def delete_transaction(pos_to_delete):
 
     # Pop the transaction

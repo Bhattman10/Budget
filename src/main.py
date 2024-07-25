@@ -3,6 +3,8 @@
 #TODO: custom saved categories
 #TODO: month-by-month transaction tracking
 #TODO: when brand new application is loaded in, problems with loading file because it doesn't exist
+#TODO: when pasting entire transaction into user input, new line mess up
+#TODO: when cling "ENTER" on delete transaction, throws error
 
 import global_vars
 from print import print_menu, print_transactions
