@@ -4,9 +4,9 @@
 import global_vars
 
 # Function to print menu options
-def print_menu(options):
+def print_menu(options, menu_title):
 
-    print("MAIN MENU")
+    print(menu_title)
     for option in options:
         print(option)
 

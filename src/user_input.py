@@ -3,7 +3,7 @@
 from Transaction import Transaction, add_transaction, delete_transaction
 from print import print_menu, print_transactions, print_transactions_with_position
 import global_vars
-
+from Category import Category, add_category
 
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
@@ -99,3 +99,73 @@ def change_month_year():
 
     #set global month
     global_vars.month = month
+
+def update_categories():
+
+    running = True
+
+    # List of menu options
+    menu_options = [
+        "1. Edit Category",
+        "2. Add Category",
+        "3. Delete Category",
+        "4. Exit to Main Menu",
+    ]
+
+    while running:
+
+        #TODO: display categories for the month
+
+        #display main menu with options
+        print_menu(menu_options, "CATEGORY MENU")
+
+        # Get user input
+        choice = input("Select an option: ")
+
+        # user inputs edit category
+        if choice == "1":
+            print("Editing category...")
+            pass
+        # user inputs add cateogry
+        elif choice == "2":
+            print("Adding category...")
+            user_input_add_category()
+        # user inputs delete cateogry
+        elif choice == "3":
+            print("Deleting category...")
+            pass
+        # user inputs exit to main menu
+        elif choice == "4":
+            print("Exiting to Main Menu...")
+            running = False
+        # user inputs anything besides 1-4
+        else:
+            print("Error. Please select a valid option from the menu.")
+
+# Collect and test user input for adding category
+def user_input_add_category():
+
+    # Collect and check name from user
+    name = input("Enter category name: ")
+
+    # Collect and check goal amount from user
+    testing = True
+    while(testing):
+
+        goal = input("Enter goal amount of category: $")
+
+        #check if string can be casted to float
+        fail_test = False
+
+        try:
+            float(goal)
+        except ValueError:
+            fail_test = True
+        if fail_test:
+            print("Error: invalid input!")
+        elif float(goal) <= 0:
+            print("Error: invalid input!")
+        else:
+            testing = False
+
+    add_category(name, goal)
