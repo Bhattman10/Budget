@@ -3,7 +3,7 @@
 from Transaction import Transaction, add_transaction, delete_transaction
 from print import print_menu, print_transactions, print_transactions_with_position, print_categories_with_position
 import global_vars
-from Category import Category, add_category, edit_category, delete_category
+from Category import Category, add_category, edit_category, delete_category, category_write_to_file
 
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
@@ -173,8 +173,18 @@ def user_input_add_category():
             print("Error: invalid input!")
         else:
             testing = False
+        
+    #set year to global year
+    year = global_vars.year
+    #set month to global month
+    month = global_vars.month
+    #set value to global zero
+    value = 0
 
-    add_category(name, goal)
+    add_category(year, month, name, goal, value)
+
+    # Update by writing to category file
+    category_write_to_file()
 
 def user_input_edit_category():
 
@@ -192,7 +202,10 @@ def user_input_edit_category():
         name = input("Enter name for category: ")
 
         #call edit cateogry function
-        edit_transaction(pos_to_edit, name, goal)
+        edit_category(pos_to_edit, name, goal)
+
+        # Update by writing to category file
+        category_write_to_file()
 
 def user_input_delete_category():
 
@@ -205,3 +218,6 @@ def user_input_delete_category():
         print("Error: invalid input.")
     else:
         delete_category(pos_to_delete)
+
+        # Update by writing to category file
+        category_write_to_file()

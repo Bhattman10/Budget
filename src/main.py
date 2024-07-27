@@ -12,9 +12,7 @@
 #tasks
 #TODO: custom saved categories
     #display category limits for the month
-    #allow user to add/edit/delete categories
     #when adding transactions, allow user to add from list of categories
-    #case: no categories added yet
 #TODO: sort deletion of transactions from latest to oldest
 #TODO: format transaction print display
 
@@ -22,13 +20,17 @@ import global_vars
 from print import print_menu, print_transactions
 from user_input import user_input_add_transaction, user_input_delete_transaction, change_month_year, update_categories
 from Transaction import write_to_file, read_from_file
+from Category import category_read_from_file
 
 # Version
 print()
-print("Budget - 0.1.11\n")
+print("Budget - 0.1.12\n")
 
 # Update transaction list by reading from file
 read_from_file()
+
+# Update category list by reading from file
+category_read_from_file()
 
 # Boolean to indiciate menu running
 running = True
