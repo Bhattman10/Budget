@@ -1,9 +1,9 @@
 # user_input.py
 
 from Transaction import Transaction, add_transaction, delete_transaction
-from print import print_menu, print_transactions, print_transactions_with_position
+from print import print_menu, print_transactions, print_transactions_with_position, print_categories_with_position
 import global_vars
-from Category import Category, add_category
+from Category import Category, add_category, edit_category, delete_category
 
 # Collect and test user input for adding transactions
 def user_input_add_transaction():
@@ -124,16 +124,22 @@ def update_categories():
 
         # user inputs edit category
         if choice == "1":
-            print("Editing category...")
-            pass
+            if len(global_vars.categories) == 0:
+                print("No categories to edit.")
+            else:
+                print("Editing category...")
+                user_input_edit_category()
         # user inputs add cateogry
         elif choice == "2":
             print("Adding category...")
             user_input_add_category()
         # user inputs delete cateogry
         elif choice == "3":
-            print("Deleting category...")
-            pass
+            if len(global_vars.categories) == 0:
+                print("No categories to delete.")
+            else:
+                print("Deleting category...")
+                user_input_delete_category()
         # user inputs exit to main menu
         elif choice == "4":
             print("Exiting to Main Menu...")
@@ -169,3 +175,33 @@ def user_input_add_category():
             testing = False
 
     add_category(name, goal)
+
+def user_input_edit_category():
+
+    #display all categories, allowing the user to select which category to edit
+    print_categories_with_position()
+
+    pos_to_edit = input("Select cateogry to edit: ")
+
+    if int(pos_to_edit) > (len(global_vars.categories)-1) or int(pos_to_edit) < 0:
+        print("Error: invalid input.")
+    else:
+
+        #collect goal and name to edit transaction with
+        goal = input("Enter goal for category: ")
+        name = input("Enter name for category: ")
+
+        #call edit cateogry function
+        edit_transaction(pos_to_edit, name, goal)
+
+def user_input_delete_category():
+
+    #display all categories, allowing the user to select which category to edit
+    print_categories_with_position()
+
+    pos_to_delete = input("Select cateogry to delete: ")
+
+    if int(pos_to_delete) > (len(global_vars.categories)-1) or int(pos_to_delete) < 0:
+        print("Error: invalid input.")
+    else:
+        delete_category(pos_to_delete)

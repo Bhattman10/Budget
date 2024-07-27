@@ -18,3 +18,12 @@ def add_category(name, goal):
 
     # Add category to list
     global_vars.categories.append(category)
+
+def edit_category(pos_to_edit, name, goal):
+    
+    #take category at position and edit attributes
+    global_vars.categories[int(pos_to_edit)].name = name
+    global_vars.categories[int(pos_to_edit)].goal = goal
+
+def delete_category(pos_to_delete):
+    global_vars.categories.pop(int(pos_to_delete))

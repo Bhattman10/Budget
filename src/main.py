@@ -7,6 +7,7 @@
 #TODO: check user input for adding transactions, categories
 #TODO: prevent user from inputing '|'
 #TODO: allow user to exit from entering transactions
+#TODO: when editing category, entering string results in error
 
 #tasks
 #TODO: custom saved categories
@@ -24,7 +25,7 @@ from Transaction import write_to_file, read_from_file
 
 # Version
 print()
-print("Budget - 0.1.9\n")
+print("Budget - 0.1.11\n")
 
 # Update transaction list by reading from file
 read_from_file()

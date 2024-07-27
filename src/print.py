@@ -72,3 +72,15 @@ def print_transactions_with_position():
 
         #iterate
         itt+=1
+
+def print_categories_with_position():
+
+    #iterator for indicating position to edit
+    itt = 0
+
+    for category in global_vars.categories:
+
+        print('[{}] {} ${}'.format(itt, category.name, category.goal))
+
+        #iterate
+        itt+=1
