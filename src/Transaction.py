@@ -23,7 +23,7 @@ def add_transaction(year, month, day, type, category, amount, merchant, note):
     global_vars.transactions.append(transaction)
 
     #TODO: update category value
-    add_Category_values(category, amount, type)
+    add_Category_values(year, month, category, amount, type)
     
     #custom function for sorting
     def trans_sort(transaction):
@@ -35,6 +35,8 @@ def add_transaction(year, month, day, type, category, amount, merchant, note):
 def delete_transaction(pos_to_delete):
 
     #record transaction cat name, amount and type for updating category
+    year = global_vars.transactions[pos_to_delete].year
+    month = global_vars.transactions[pos_to_delete].month
     category = global_vars.transactions[pos_to_delete].category
     amount = global_vars.transactions[pos_to_delete].amount
     type = global_vars.transactions[pos_to_delete].type
@@ -43,7 +45,7 @@ def delete_transaction(pos_to_delete):
     global_vars.transactions.pop(pos_to_delete)
 
     #TODO: update category value
-    remove_Category_values(category, amount, type)
+    remove_Category_values(year, month, category, amount, type)
 
 def write_to_file():
 

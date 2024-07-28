@@ -97,20 +97,34 @@ def category_read_from_file():
         #create the category
         add_category(year, month, name, goal, value)
 
-def add_Category_values(name, amount, type):
+def add_Category_values(year, month, name, amount, type):
     #first, find instance of category
     for category in global_vars.categories:
-        if category.name == name:
-            if type == 0:
-                category.value = float(category.value) - float(amount)
-            else:
+        #next, check that category is proper
+        if category.name == name and category.year == year and category.month == month:
+            #if type is expense, add to value
+            if int(type) == 0:
                 category.value = float(category.value) + float(amount)
+                # Update by writing to category file
+                category_write_to_file()
+            #else because type is income, remove from value
+            else:
+                category.value = float(category.value) - float(amount)
+                # Update by writing to category file
+                category_write_to_file()
 
-def remove_Category_values(name, amount, type):
+def remove_Category_values(year, month, name, amount, type):
     #first, find instance of category
     for category in global_vars.categories:
-        if category.name == name:
-            if type == 0:
-                category.value = float(category.value) + float(amount)
-            else:
+        #next, check that category is proper
+        if category.name == name and category.year == year and category.month == month:
+            #if type is expense, remove from value
+            if int(type) == 0:
                 category.value = float(category.value) - float(amount)
+                # Update by writing to category file
+                category_write_to_file()
+            #else because type is income, add to value
+            else:
+                category.value = float(category.value) + float(amount)
+                # Update by writing to category file
+                category_write_to_file()

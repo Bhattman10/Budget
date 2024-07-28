@@ -1,6 +1,6 @@
 # main.py
 
-#bugs & cases
+#bugs & testing
 #TODO: when brand new application is loaded in, problems with loading file because it doesn't exist
 #TODO: when pasting entire transaction into user input, new line mess up
 #TODO: when submitting "ENTER" on delete transaction, error
@@ -10,8 +10,6 @@
 #TODO: when editing category, entering string results in error
 
 #tasks
-#TODO: custom saved categories
-    #FIXME: file does not update after updating category values
 #TODO: sort deletion of transactions from latest to oldest
 #TODO: format transaction print display
 
@@ -19,11 +17,11 @@ import global_vars
 from print import print_menu, print_transactions, print_categories
 from user_input import user_input_add_transaction, user_input_delete_transaction, change_month_year, update_categories
 from Transaction import write_to_file, read_from_file
-from Category import category_read_from_file
+from Category import category_read_from_file, category_write_to_file
 
 # Version
 print()
-print("Budget - 0.1.12\n")
+print("Budget - 0.1.13\n")
 
 # Update transaction list by reading from file
 read_from_file()
