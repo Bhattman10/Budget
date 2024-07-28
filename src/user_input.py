@@ -32,6 +32,21 @@ def user_input_add_transaction():
             print("Error: invalid input!")
         else:
             testing = False
+    
+    # Collect and check category from user
+    testing = True
+    while(testing):
+        #first, display categories
+        print_categories_with_position()
+        #then, recieve input from user on selection of category
+        category_index = input("Select category index of transaction: ")
+        #test user input, breaking loop if input looks OK
+        if int(category_index) > (len(global_vars.categories)-1) or int(category_index) < 0:
+            print("Error: invalid input.")
+        else:
+            category = global_vars.categories[int(category_index)].name
+            testing = False
+
 
     # Collect and check amount from user
     testing = True
@@ -54,7 +69,7 @@ def user_input_add_transaction():
     note = input("Add note for transaction: ")
 
     #create object and append to list
-    add_transaction(global_vars.year, global_vars.month, day, type, amount, merchant, note)
+    add_transaction(global_vars.year, global_vars.month, day, type, category, amount, merchant, note)
 
 # Collect and test user input for deleting transactions
 def user_input_delete_transaction():

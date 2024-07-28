@@ -11,13 +11,12 @@
 
 #tasks
 #TODO: custom saved categories
-    #display category limits for the month
-    #when adding transactions, allow user to add from list of categories
+    #FIXME: file does not update after updating category values
 #TODO: sort deletion of transactions from latest to oldest
 #TODO: format transaction print display
 
 import global_vars
-from print import print_menu, print_transactions
+from print import print_menu, print_transactions, print_categories
 from user_input import user_input_add_transaction, user_input_delete_transaction, change_month_year, update_categories
 from Transaction import write_to_file, read_from_file
 from Category import category_read_from_file
@@ -47,7 +46,7 @@ menu_options = [
 # While loop to display menu
 while running:
 
-    #display all transactions, if there are any
+    #display all transactions for month/year, if there are any
     if len(global_vars.transactions) == 0:
         print()
         print("No transactions to display.")
@@ -62,6 +61,16 @@ while running:
     write_to_file()
 
     #TODO: display category information
+    #display all categories for month/year, if there are any
+    if len(global_vars.categories) == 0:
+        print()
+        print("No categories to display.")
+        print()
+    else:
+        print()
+        print('{}/{} CATEGORIES...'.format(global_vars.month, global_vars.year))
+        print_categories()
+        print()
 
     #display main menu with options
     print_menu(menu_options, "MAIN MENU")

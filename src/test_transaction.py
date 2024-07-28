@@ -17,13 +17,14 @@ class TestAddDelete(unittest.TestCase):
     def test_add_delete_basic(self):
 
         # Add transaction
-        add_transaction(2024, 7, 23, 1, 100.00, 'Nike', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Nike', 'new shoes!')
 
         # Test first transaction
         self.assertEqual(global_vars.transactions[0].year, 2024)
         self.assertEqual(global_vars.transactions[0].month, 7)
         self.assertEqual(global_vars.transactions[0].day, 23)
         self.assertEqual(global_vars.transactions[0].type, 1)
+        self.assertEqual(global_vars.transactions[0].category, "Groceries")
         self.assertEqual(global_vars.transactions[0].amount, 100.00)
         self.assertEqual(global_vars.transactions[0].merchant, 'Nike')
         self.assertEqual(global_vars.transactions[0].note, 'new shoes!')
@@ -40,9 +41,9 @@ class TestAddDelete(unittest.TestCase):
     def test_add_delete_normal(self):
 
         # Add transactions
-        add_transaction(2024, 7, 23, 1, 100.00, 'Nike', 'new shoes!')
-        add_transaction(2024, 7, 24, 1, 100.00, 'Puma', 'new shoes!')
-        add_transaction(2024, 7, 25, 1, 100.00, 'Crocs', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Nike', 'new shoes!')
+        add_transaction(2024, 7, 24, 1, "Groceries", 100.00, 'Puma', 'new shoes!')
+        add_transaction(2024, 7, 25, 1, "Groceries", 100.00, 'Crocs', 'new shoes!')
 
         # Delete transaction
         delete_transaction(0)
@@ -65,7 +66,7 @@ class TestAddDelete(unittest.TestCase):
     def test_add_delete_complex(self):
 
         # Add transaction
-        add_transaction(2024, 7, 23, 1, 100.00, 'Nike', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Nike', 'new shoes!')
 
         # Delete transaction
         delete_transaction(0)
@@ -74,9 +75,9 @@ class TestAddDelete(unittest.TestCase):
         self.assertEqual(len(global_vars.transactions), 0)
 
         # Add transactions
-        add_transaction(2024, 7, 23, 1, 100.00, 'Nike', 'new shoes!')
-        add_transaction(2024, 7, 23, 1, 100.00, 'Adidas', 'new shoes!')
-        add_transaction(2024, 7, 23, 1, 100.00, 'Puma', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Nike', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Adidas', 'new shoes!')
+        add_transaction(2024, 7, 23, 1, "Groceries", 100.00, 'Puma', 'new shoes!')
 
         # Delete transaction
         delete_transaction(0)

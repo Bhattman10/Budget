@@ -1,26 +1,30 @@
 # Transaction.py
 
-# Import global_vars.py
 import global_vars
+from Category import add_Category_values, remove_Category_values
 
 class Transaction:
-    def __init__(self, year, month, day, type, amount=None, merchant=None, note=None):
+    def __init__(self, year, month, day, type, category, amount=None, merchant=None, note=None):
         self.year = year
         self.month = month
         self.day = day
         self.type = type
+        self.category = category
         self.amount = amount
         self.merchant = merchant
         self.note = note
 
-def add_transaction(year, month, day, type, amount, merchant, note):
+def add_transaction(year, month, day, type, category, amount, merchant, note):
 
     # Create transaction
-    transaction = Transaction(year, month, day, type, amount, merchant, note)
+    transaction = Transaction(year, month, day, type, category, amount, merchant, note)
 
     # Add transaction to list
     global_vars.transactions.append(transaction)
 
+    #TODO: update category value
+    add_Category_values(category, amount, type)
+    
     #custom function for sorting
     def trans_sort(transaction):
         return transaction.day
@@ -30,8 +34,16 @@ def add_transaction(year, month, day, type, amount, merchant, note):
 
 def delete_transaction(pos_to_delete):
 
+    #record transaction cat name, amount and type for updating category
+    category = global_vars.transactions[pos_to_delete].category
+    amount = global_vars.transactions[pos_to_delete].amount
+    type = global_vars.transactions[pos_to_delete].type
+
     # Pop the transaction
     global_vars.transactions.pop(pos_to_delete)
+
+    #TODO: update category value
+    remove_Category_values(category, amount, type)
 
 def write_to_file():
 
@@ -65,6 +77,8 @@ def write_to_file():
         f.write(transaction.merchant)
         f.write("|")
         f.write(transaction.note)
+        f.write("|")
+        f.write(transaction.category)
         f.write("|")
 
     #close file
@@ -124,8 +138,12 @@ def read_from_file():
         char_pos_2 = txt.index("|", char_pos_1+1, len(txt))
         note = txt[char_pos_1+1:char_pos_2]
 
-        #set char_pos_1 with value of ending indent, for resent of for loop
-        char_pos_1 = char_pos_2
+        #collect category of transaction
+        char_pos_1 = txt.index("|", char_pos_2+1, len(txt))
+        category = txt[char_pos_2+1:char_pos_1]
 
-        #creat the transaction
-        add_transaction(year, month, day, type, amount, merchant, note)
+        # #set char_pos_1 with value of ending indent, for resent of for loop
+        # char_pos_1 = char_pos_2
+
+        #create the transaction
+        add_transaction(year, month, day, type, category, amount, merchant, note)

@@ -96,3 +96,21 @@ def category_read_from_file():
 
         #create the category
         add_category(year, month, name, goal, value)
+
+def add_Category_values(name, amount, type):
+    #first, find instance of category
+    for category in global_vars.categories:
+        if category.name == name:
+            if type == 0:
+                category.value = float(category.value) - float(amount)
+            else:
+                category.value = float(category.value) + float(amount)
+
+def remove_Category_values(name, amount, type):
+    #first, find instance of category
+    for category in global_vars.categories:
+        if category.name == name:
+            if type == 0:
+                category.value = float(category.value) + float(amount)
+            else:
+                category.value = float(category.value) - float(amount)

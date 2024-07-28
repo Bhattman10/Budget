@@ -46,7 +46,7 @@ def print_transactions():
             #variable to display date in readable format
             date = transaction.month + '/' + transaction.day + '/' + transaction.year
 
-            print('{} {} ${} {} {}'.format(date, print_type, transaction.amount, transaction.merchant, transaction.note))
+            print('{} {} {} ${} {} {}'.format(date, print_type, transaction.category, transaction.amount, transaction.merchant, transaction.note))
         
     #print totals
     print()
@@ -68,10 +68,17 @@ def print_transactions_with_position():
         #variable to display date in readable format
         date = transaction.month + '/' + transaction.day + '/' + transaction.year
 
-        print('[{}] {} {} ${} {} {}'.format(itt, date, print_type, transaction.amount, transaction.merchant, transaction.note))
+        print('[{}] {} {} {} ${} {} {}'.format(itt, date, print_type, transaction.category, transaction.amount, transaction.merchant, transaction.note))
 
         #iterate
         itt+=1
+
+def print_categories():
+
+    for category in global_vars.categories:
+
+        if(category.year == global_vars.year and category.month == global_vars.month):
+            print('{} ${}/{}'.format(category.name, category.value, category.goal))
 
 def print_categories_with_position():
 
@@ -80,7 +87,8 @@ def print_categories_with_position():
 
     for category in global_vars.categories:
 
-        print('[{}] {} ${}'.format(itt, category.name, category.goal))
+        if(category.year == global_vars.year and category.month == global_vars.month):
+            print('[{}] {} ${}'.format(itt, category.name, category.goal))
 
         #iterate
         itt+=1
